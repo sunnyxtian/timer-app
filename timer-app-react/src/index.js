@@ -1,5 +1,5 @@
 /**
- * Authors: Sunny Tian,
+ * Authors: Sunny Tian, Henok Assalif
  * 7/21/2024
  * Timer App
  */
