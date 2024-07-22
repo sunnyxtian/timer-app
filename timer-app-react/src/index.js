@@ -1,3 +1,9 @@
+/**
+ * Authors: Sunny Tian,
+ * 7/21/2024
+ * Timer App
+ */
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
