@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect, useRef } from 'react';
+import Button from 'react-bootstrap/Button';
 
 const Timer = () => {
     // We need ref in this, because we are dealing
@@ -111,10 +112,9 @@ const Timer = () => {
 
     return (
         <div>
-            <h1>GeeksforGeeks</h1>
             <h3>Countdown Timer Using React JS</h3>
             <h2>{timer}</h2>
-            <button onClick={onClickReset}>Reset</button>
+            <Button onClick={onClickReset}>Reset</Button>
         </div>
     );
 }

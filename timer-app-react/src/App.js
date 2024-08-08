@@ -6,12 +6,14 @@
 
 import './App.css';
 import Timer from './components/Timer';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Timer />
+        <NavBar/>
+        <Timer/>
       </header>
     </div>
   );
