@@ -61,14 +61,14 @@ const Timer = () => {
     };
 
     /**
-     * Sets the timer to 10 seconds and resets it
+     * Sets the timer to 60 seconds and resets it
      * @param {Event} e - The event object
      */
     const clearTimer = (e) => {
         // If you adjust it you should also need to
         // adjust the Endtime formula we are about
         // to code next
-        setTimer("00:00:10");
+        setTimer("00:01:00");
 
         // If you try to remove this line the
         // updating of timer Variable will be
@@ -87,8 +87,8 @@ const Timer = () => {
         let deadline = new Date();
 
         // This is where you need to adjust if
-        // you entend to add more time
-        deadline.setSeconds(deadline.getSeconds() + 10);
+        // you entend to add more time (+ total second)
+        deadline.setSeconds(deadline.getSeconds() + 60);
         return deadline;
     };
 
