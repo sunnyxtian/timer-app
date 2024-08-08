@@ -17,19 +17,15 @@ const Timer = () => {
 
     /**
      * Gets the remains amount of time
-     * @param {Event} e - Event object
+     * @param {Date} date - The date object
      * @returns
      */
-    const getTimeRemaining = (e) => {
-      const total =
-          Date.parse(e) - Date.parse(new Date());
+    const getTimeRemaining = (date) => {
+      const total = Date.parse(date) - Date.parse(new Date()); // static shifted time minus
+      // the static current time
       const seconds = Math.floor((total / 1000) % 60);
-      const minutes = Math.floor(
-          (total / 1000 / 60) % 60
-      );
-      const hours = Math.floor(
-          (total / 1000 / 60 / 60) % 24
-      );
+      const minutes = Math.floor((total / 1000 / 60) % 60);
+      const hours = Math.floor((total / 1000 / 60 / 60) % 24);
       return {
           total,
           hours,
@@ -40,11 +36,11 @@ const Timer = () => {
 
     /**
      * Updates the timer state value
-     * @param {Event} e - Event Object
+     * @param {Date} date - The date Object
      */
-    const startTimer = (e) => {
+    const startTimer = (date) => {
       let { total, hours, minutes, seconds } =
-            getTimeRemaining(e);
+            getTimeRemaining(date);
         if (total >= 0) {
             // update the timer
             // check if less than 10 then we need to
@@ -63,9 +59,9 @@ const Timer = () => {
 
     /**
      * Sets the timer to 60 seconds and resets it
-     * @param {Event} e - The event object
+     * @param {Date} date - The date object shifted by the timer
      */
-    const clearTimer = (e) => {
+    const clearTimer = (date) => {
         // If you adjust it you should also need to
         // adjust the Endtime formula we are about
         // to code next
@@ -79,16 +75,24 @@ const Timer = () => {
         }
 
         const id = setInterval(() => {
-            startTimer(e);
+            startTimer(date);
         }, 1000);
         Ref.current = id;
     };
+
+    // implement the pause and start feature function here and place a new button for pause in jsx
+    // The implemenation is similar to the cleartimer function. Before clearing interval get the
+    // the value in timer. Clear it and set the state to it. Switch the button from pause to start
+    // once the button is clicked again then start the timer again. by using set interval and start
+    // timer function.
 
     const getDeadTime = () => {
         let deadline = new Date();
 
         // This is where you need to adjust if
         // you entend to add more time (+ total second)
+
+        // add 60 seconds to the current time
         deadline.setSeconds(deadline.getSeconds() + 60);
         return deadline;
     };
