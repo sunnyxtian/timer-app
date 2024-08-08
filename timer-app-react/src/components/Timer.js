@@ -1,5 +1,6 @@
 /**
- * Comment purpose later (By Henok Assalif & Sunny Tian) Credits to GeeksforGeeks for ideas
+ * Comment purpose later (By Henok Assalif & Sunny Tian)
+ * Credits to GeeksforGeeks for ideas
  */
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -109,11 +110,8 @@ const Timer = () => {
     };
 
     return (
-        <div
-            style={{ textAlign: "center", margin: "auto" }}>
-            <h1 style={{ color: "green" }}>
-                GeeksforGeeks
-            </h1>
+        <div>
+            <h1>GeeksforGeeks</h1>
             <h3>Countdown Timer Using React JS</h3>
             <h2>{timer}</h2>
             <button onClick={onClickReset}>Reset</button>
