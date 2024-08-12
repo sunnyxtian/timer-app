@@ -5,7 +5,7 @@
  */
 
 import './App.css';
-import Timer from './components/Timer';
+import Timer from './components/Timer.js';
 import NavBar from './components/NavBar';
 
 function App() {
