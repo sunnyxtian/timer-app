@@ -4,6 +4,8 @@
  * Timer App
  */
 
- .App-header {
-  border: 5px solid black;
- }
+.App-header {
+  text-align: center;
+  margin: auto;
+  max-width: 95%;
+}

@@ -98,7 +98,7 @@ const Timer = () => {
 
     return (
         <div>
-            <h3>Countdown Timer Using React JS</h3>
+            <h3 className="fs-6 text-secondary">study session</h3>
             <h2>{timer}</h2>
             <Button onClick={onClickReset}>Reset</Button>
             {isPaused ? (
