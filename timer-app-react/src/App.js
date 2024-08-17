@@ -35,7 +35,8 @@ function App() {
     <div className="App">
       <NavBar/>
       <Routes>
-        <Route path="" element={<Timer/>} />
+        <Route path="" element={<Timer currentInterval="0" totalInterval="3" /*setter function*/
+                /*focusState={focusStateBool}*//>} />
         <Route path="settings" element={<Settings/>} />
       </Routes>
     </div>
