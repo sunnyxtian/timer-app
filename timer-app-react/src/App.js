@@ -4,9 +4,12 @@
  * Timer App
  */
 
+import { Routes, Route } from 'react-router-dom';
+
 import './App.css';
 import Timer from './components/Timer.js';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar.js';
+import Settings from './components/Settings.js'
 
 function App() {
 
@@ -30,10 +33,11 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <NavBar/>
-        <Timer/>
-      </header>
+      <NavBar/>
+      <Routes>
+        <Route path="" element={<Timer/>} />
+        <Route path="settings" element={<Settings/>} />
+      </Routes>
     </div>
   );
 }
