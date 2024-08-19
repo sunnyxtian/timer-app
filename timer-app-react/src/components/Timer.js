@@ -9,7 +9,7 @@ const Timer = () => {
     /**
      * Formats time from seconds to HH:MM:SS
      * @param {number} seconds - Time in seconds
-     * @returns {string} - Formatted time string
+     * @returns {String} - Formatted time string
      */
     const formatTime = (seconds) => {
         if (seconds <= 0) return "00:00:00"; // Handle zero or negative time
