@@ -21,16 +21,17 @@ function App() {
   // DONE 1. have the current interval and interval number as a state variable
   // and then pass the callback setter function as a prob to the timer component
   // this will allow the timer component to increment the current interval number
-  const [currInterval, setCurrInterval] = useState(1);
-  const [numIntervals, setNumIntervals] = useState(8);
+  const [currInterval, setCurrInterval] = useState(0);
+  const [numIntervals, setNumIntervals] = useState(3);
 
   // DONE 2. have the break and focus durations as a state variable
   // pass the setter function to the settings component to let the user edit
   // break and focus times
-  const [breakDurationMins, setBreakDurationMins] = useState(5);
-  const [focusDurationMins, setFocusDurationMins] = useState(20);
+  const [breakDurationMins, setBreakDurationMins] = useState(1/6);
+  const [focusDurationMins, setFocusDurationMins] = useState(2/6);
+  const [focusStateBool, setFocusStateBool] = useState(true);
 
-  // 3. Make wrapper functions to pass the consts downwards.
+  // 3. Pass wrapper functions of setters down to the child elements.
 
   // 4. we can use division to figure out if the interval is a break or focus session
 
@@ -42,8 +43,10 @@ function App() {
     <div className="App">
       <NavBar/>
       <Routes>
-        <Route path="" element={<Timer currentInterval={currInterval} totalInterval={numIntervals} /*setter function*/
-                /*focusState={focusStateBool}*//>} />
+        <Route path="" element={<Timer currentInterval={currInterval} totalInterval={numIntervals}
+          breakDuration={breakDurationMins} focusDuration={focusDurationMins}
+          setCurrInterval={setCurrInterval} setNumIntervals={setNumIntervals}
+          focusState={focusStateBool} setFocusStateBool={setFocusStateBool}/>} />
         <Route path="settings" element={<Settings/>} />
       </Routes>
     </div>

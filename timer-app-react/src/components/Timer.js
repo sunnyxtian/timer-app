@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Button from 'react-bootstrap/Button';
 
 // For sunny
-const Timer = () => {
+const Timer = (props) => {
+
     // Define the initial duration in seconds
-    const INITIAL_DURATION = 60;
+    const INITIAL_DURATION = props.focusState ? props.focusDuration * 60 : props.breakDuration * 60;
 
     /**
      * Formats time from seconds to HH:MM:SS
@@ -12,7 +13,10 @@ const Timer = () => {
      * @returns {String} - Formatted time string
      */
     const formatTime = (seconds) => {
-        if (seconds <= 0) return "00:00:00"; // Handle zero or negative time
+        if (seconds <= 0) {
+            return "00:00:00"; // Handle zero or negative time
+        }
+
         const hours = Math.floor(seconds / 3600);
         const minutes = Math.floor((seconds % 3600) / 60);
         const secs = seconds % 60;
@@ -54,14 +58,36 @@ const Timer = () => {
     }, []);
 
     /**
+     * Handles the switch between focus and break states with a delay
+     */
+    const handleSwitchState = () => {
+      setTimeout(() => {
+          const newFocusState = !props.focusState;
+          console.log('Before:', props.focusState); // Old state
+          props.setFocusStateBool(newFocusState); // Set new state
+
+          console.log('After:', newFocusState); // New state
+          if (newFocusState) { // increment interval if new state is focus session
+              props.setCurrInterval(props.currentInterval + 1);
+          }
+
+          const newDuration = newFocusState ? props.focusDuration * 60 : props.breakDuration * 60;
+          setRemainingTime(newDuration);
+          setTimer(formatTime(newDuration));
+          startTimer();
+      }, 3000); // 3 second delay before switching state
+    };
+
+    /**
      * Resets the timer to the initial duration and starts it
      */
     const onClickReset = () => {
         if (Ref.current) {
             clearInterval(Ref.current);
         }
-        setRemainingTime(INITIAL_DURATION);
-        setTimer(formatTime(INITIAL_DURATION));
+        const newDuration = props.focusState ? props.focusDuration * 60 : props.breakDuration * 60;
+        setRemainingTime(newDuration);
+        setTimer(formatTime(newDuration));
         startTimer();
         setIsPaused(false);
     };
@@ -95,6 +121,10 @@ const Timer = () => {
     // Update the timer display whenever remainingTime changes
     useEffect(() => {
         setTimer(formatTime(remainingTime));
+
+        if (remainingTime === 0) {
+            handleSwitchState(); // Call state switch handler when timer hits zero
+        }
     }, [remainingTime]);
 
     return (
@@ -112,6 +142,3 @@ const Timer = () => {
 };
 
 export default Timer;
-
-
-// custion input field for time https://www.youtube.com/watch?v=GA2LdsTmW1k&t=273s
