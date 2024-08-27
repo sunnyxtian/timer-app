@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 const Timer = (props) => {
 
     // Define the initial duration in seconds
-    const INITIAL_DURATION = props.isFocusInterval ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
+    const INITIAL_DURATION = props.isFocusState ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
 
     /**
      * Formats time from seconds to HH:MM:SS
@@ -62,19 +62,10 @@ const Timer = (props) => {
      */
     const handleSwitchState = () => {
       setTimeout(() => {
-          const newFocusState = !props.isFocusInterval;
-          props.toggleFocusState(); // Toggle the focus state
-
-          if (newFocusState) { // increment interval if new state is focus session
-              props.incrementInterval(props.currentInterval + 1);
-          }
-
-          const newDuration = newFocusState ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
-          console.log(newDuration);  // this outputs NaN during breaks
-
-          setRemainingTime(newDuration);
-        //   setTimer(formatTime(newDuration));   Not necessary since this function runs when remaining time changes
-          startTimer();
+        console.log(props.isFocusState); // this outputs the correct state
+          const newState = !props.isFocusState; // Switch state
+          props.toggleFocusState(newState); // Toggle the focus state
+          // Use Effect is handling the state change
       }, 3000); // 3 second delay before switching state
     };
 
@@ -85,7 +76,7 @@ const Timer = (props) => {
         if (Ref.current) {
             clearInterval(Ref.current);
         }
-        const newDuration = props.isFocusInterval ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
+        const newDuration = props.isFocusState ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
         setRemainingTime(newDuration);
         // setTimer(formatTime(newDuration)); Not necessary since this function runs when remaining time changes
         startTimer();
@@ -126,6 +117,20 @@ const Timer = (props) => {
             handleSwitchState(); // Call state switch handler when timer hits zero
         }
     }, [remainingTime]);
+
+    useEffect(() => {
+        if (props.isFocusState) { // increment interval if new state is focus session
+          props.incrementInterval(props.currentInterval + 1);
+        }
+
+        // This will run after props.isFocusState has changed
+        const newDuration = props.isFocusState ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
+        console.log("Updated duration:", newDuration);
+
+        setRemainingTime(newDuration);
+        setTimer(formatTime(newDuration));
+        startTimer();
+    }, [props.isFocusState]); // Dependency array ensures this runs after isFocusState changes
 
     return (
         <div>

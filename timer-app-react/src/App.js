@@ -50,8 +50,7 @@ function App() {
     setFocusLengthMins(updatedFocusLengthMins);
   }
 
-  const toggleFocusState = function () {
-    const updatedFocusState = !isFocusInterval;
+  const toggleFocusState = function (updatedFocusState) {
     setIsFocusInterval(updatedFocusState);
   }
 
@@ -66,9 +65,9 @@ function App() {
       <NavBar/>
       <Routes>
         <Route path="" element={<Timer currentInterval={currInterval} totalInterval={totalIntervals}
-          breakLength={breakLengthMins} focusLengthMins={focusLengthMins}
+          breakLengthMins={breakLengthMins} focusLengthMins={focusLengthMins}
           incrementInterval={incrementInterval} editTotalIntervals={editTotalIntervals}
-          isFocusInterval={isFocusInterval} toggleFocusState={toggleFocusState}/>} />
+          isFocusState={isFocusInterval} toggleFocusState={toggleFocusState}/>} />
         <Route path="settings" element={<Settings/>} />
       </Routes>
     </div>
