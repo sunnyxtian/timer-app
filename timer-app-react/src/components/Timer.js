@@ -70,8 +70,10 @@ const Timer = (props) => {
           }
 
           const newDuration = newFocusState ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
+          console.log(newDuration);  // this outputs NaN during breaks
+
           setRemainingTime(newDuration);
-          setTimer(formatTime(newDuration));
+        //   setTimer(formatTime(newDuration));   Not necessary since this function runs when remaining time changes
           startTimer();
       }, 3000); // 3 second delay before switching state
     };
@@ -85,7 +87,7 @@ const Timer = (props) => {
         }
         const newDuration = props.isFocusInterval ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
         setRemainingTime(newDuration);
-        setTimer(formatTime(newDuration));
+        // setTimer(formatTime(newDuration)); Not necessary since this function runs when remaining time changes
         startTimer();
         setIsPaused(false);
     };

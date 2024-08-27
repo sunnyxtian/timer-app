@@ -1,6 +1,10 @@
 function NavBar () {
   return (
-    <h1>Timer Website Name</h1>
+    <div>
+      <header className="mt-5">
+        <h1>Simple Timer Company &#169;	</h1>
+      </header>
+    </div>
   )
 }
 
