@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Timer from './components/Timer.js';
 import NavBar from './components/NavBar.js';
-import Settings from './components/Settings.js'
+import Settings from './components/Settings.js';
 
 function App() {
 
@@ -19,8 +19,8 @@ function App() {
   // DONE initialize browser router
 
   // DONE 1. have the current interval and interval number as a state variable
-  // and then pass the callback setter function as a prob to the timer component
-  // this will allow the timer component to increment the current interval number
+  // and then pass the callback setter function as a prop to the Timer component
+  // this will allow the Timer component to increment the current interval number
   const [currInterval, setCurrInterval] = useState(0);
   const [totalIntervals, setTotalIntervals] = useState(3);
 
@@ -65,9 +65,9 @@ function App() {
       <NavBar/>
       <Routes>
         <Route path="" element={<Timer currentInterval={currInterval} totalInterval={totalIntervals}
-          breakLength={breakLengthMins} focusDuration={focusLengthMins}
+          breakLength={breakLengthMins} focusLengthMins={focusLengthMins}
           incrementInterval={incrementInterval} editTotalIntervals={editTotalIntervals}
-          focusState={isFocusInterval} toggleFocusState={toggleFocusState}/>} />
+          isFocusInterval={isFocusInterval} toggleFocusState={toggleFocusState}/>} />
         <Route path="settings" element={<Settings/>} />
       </Routes>
     </div>

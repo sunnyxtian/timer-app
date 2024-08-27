@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 const Timer = (props) => {
 
     // Define the initial duration in seconds
-    const INITIAL_DURATION = props.focusState ? props.focusDuration * 60 : props.breakDuration * 60;
+    const INITIAL_DURATION = props.isFocusInterval ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
 
     /**
      * Formats time from seconds to HH:MM:SS
@@ -62,16 +62,14 @@ const Timer = (props) => {
      */
     const handleSwitchState = () => {
       setTimeout(() => {
-          const newFocusState = !props.focusState;
-          console.log('Before:', props.focusState); // Old state
-          props.setFocusStateBool(newFocusState); // Set new state
+          const newFocusState = !props.isFocusInterval;
+          props.toggleFocusState(); // Toggle the focus state
 
-          console.log('After:', newFocusState); // New state
           if (newFocusState) { // increment interval if new state is focus session
-              props.setCurrInterval(props.currentInterval + 1);
+              props.incrementInterval(props.currentInterval + 1);
           }
 
-          const newDuration = newFocusState ? props.focusDuration * 60 : props.breakDuration * 60;
+          const newDuration = newFocusState ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
           setRemainingTime(newDuration);
           setTimer(formatTime(newDuration));
           startTimer();
@@ -85,7 +83,7 @@ const Timer = (props) => {
         if (Ref.current) {
             clearInterval(Ref.current);
         }
-        const newDuration = props.focusState ? props.focusDuration * 60 : props.breakDuration * 60;
+        const newDuration = props.isFocusInterval ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
         setRemainingTime(newDuration);
         setTimer(formatTime(newDuration));
         startTimer();
