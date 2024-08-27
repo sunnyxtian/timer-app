@@ -22,16 +22,37 @@ function App() {
   // and then pass the callback setter function as a prob to the timer component
   // this will allow the timer component to increment the current interval number
   const [currInterval, setCurrInterval] = useState(0);
-  const [numIntervals, setNumIntervals] = useState(3);
+  const [totalIntervals, setTotalIntervals] = useState(3);
 
   // DONE 2. have the break and focus durations as a state variable
   // pass the setter function to the settings component to let the user edit
   // break and focus times
-  const [breakDurationMins, setBreakDurationMins] = useState(1/6);
-  const [focusDurationMins, setFocusDurationMins] = useState(2/6);
-  const [focusStateBool, setFocusStateBool] = useState(true);
+  const [breakLengthMins, setBreakLengthMins] = useState(1/6);
+  const [focusLengthMins, setFocusLengthMins] = useState(2/6);
+  const [isFocusInterval, setIsFocusInterval] = useState(true);
 
   // 3. Pass wrapper functions of setters down to the child elements.
+  const incrementInterval = function () {
+    const updatedCurrInterval = currInterval + 1;
+    setCurrInterval(updatedCurrInterval);
+  }
+
+  const editTotalIntervals = function (updatedTotalIntervals) {
+    setTotalIntervals(updatedTotalIntervals);
+  }
+
+  const editBreakLengthMins = function (updatedBreakLengthMins) {
+    setBreakLengthMins(updatedBreakLengthMins);
+  }
+
+  const editFocusLengthMins = function (updatedFocusLengthMins) {
+    setFocusLengthMins(updatedFocusLengthMins);
+  }
+
+  const toggleFocusState = function () {
+    const updatedFocusState = !isFocusInterval;
+    setIsFocusInterval(updatedFocusState);
+  }
 
   // 4. we can use division to figure out if the interval is a break or focus session
 
@@ -43,10 +64,10 @@ function App() {
     <div className="App">
       <NavBar/>
       <Routes>
-        <Route path="" element={<Timer currentInterval={currInterval} totalInterval={numIntervals}
-          breakDuration={breakDurationMins} focusDuration={focusDurationMins}
-          setCurrInterval={setCurrInterval} setNumIntervals={setNumIntervals}
-          focusState={focusStateBool} setFocusStateBool={setFocusStateBool}/>} />
+        <Route path="" element={<Timer currentInterval={currInterval} totalInterval={totalIntervals}
+          breakLength={breakLengthMins} focusDuration={focusLengthMins}
+          incrementInterval={incrementInterval} editTotalIntervals={editTotalIntervals}
+          focusState={isFocusInterval} toggleFocusState={toggleFocusState}/>} />
         <Route path="settings" element={<Settings/>} />
       </Routes>
     </div>
