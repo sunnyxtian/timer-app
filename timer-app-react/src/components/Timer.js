@@ -135,7 +135,7 @@ const Timer = (props) => {
     return (
         <div>
             <h3 className="fs-6 text-secondary">study session</h3>
-            <h2>{timer}</h2>
+            <h1 className="display-1 fw-medium">{timer}</h1>
             <Button onClick={onClickReset}>Reset</Button>
             {isPaused ? (
                 <Button onClick={onClickResume}>Resume</Button>
