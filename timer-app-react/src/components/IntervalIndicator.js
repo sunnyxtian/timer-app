@@ -1,8 +1,6 @@
-function IntervalIndicator({ interval }) {
+function IntervalIndicator({ props }) {
   return (
-    <div>
-      <h2>Interval: {interval}</h2>
-    </div>
+
   );
 }
 
@@ -26,4 +24,8 @@ export default IntervalIndicator;
  *
  * 4.) When the current interval is over, color the oval green and move to the next oval
  *     (green indicates complete)
+ *
+ *
+ * Intervals needs: Total intervals, current interval, and interval total time and current time in
+ * current interval
  */
