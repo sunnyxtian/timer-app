@@ -1,6 +1,21 @@
-function IntervalIndicator({ props }) {
-  return (
+function IntervalIndicator(props) {
+  let currInterval = props.currentInterval;
+  const totalIntervals = props.totalIntervals;
+  let remainingTime = props.remainingTime;
+  const intervalLengthMins = props.focusLengthMins;
 
+  const interval = (
+    <div className="bg-secondary-subtle rounded mx-1" style={{width:"2rem", height:"1rem"}}>
+    </div>
+  );
+
+  return (
+    <div className="d-inline-flex p-4">
+      {interval}
+      {interval}
+      {interval}
+      {interval}
+    </div>
   );
 }
 

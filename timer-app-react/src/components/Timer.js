@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Button from 'react-bootstrap/Button';
+import IntervalIndicator from './IntervalIndicator';
 
 // For sunny
 const Timer = (props) => {
@@ -134,14 +135,24 @@ const Timer = (props) => {
 
     return (
         <div>
-            <h3 className="fs-6 text-secondary">study session</h3>
-            <h1 className="display-1 fw-medium">{timer}</h1>
-            <Button onClick={onClickReset}>Reset</Button>
-            {isPaused ? (
-                <Button onClick={onClickResume}>Resume</Button>
-            ) : (
-                <Button onClick={onClickPause}>Pause</Button>
-            )}
+            <div>
+                <h3 className="fs-6 text-secondary">study session</h3>
+                <h1 className="display-1 fw-medium">{timer}</h1>
+                <Button onClick={onClickReset}>Reset</Button>
+                {isPaused ? (
+                    <Button onClick={onClickResume}>Resume</Button>
+                ) : (
+                    <Button onClick={onClickPause}>Pause</Button>
+                )}
+            </div>
+            <div>
+                <IntervalIndicator
+                    focusLengthMins={props.focusLengthMins}
+                    remainingTime={props.remainingTime}
+                    totalIntervals={props.totalIntervals}
+                    currentInterval={props.currentInterval}
+                />
+            </div>
         </div>
     );
 };

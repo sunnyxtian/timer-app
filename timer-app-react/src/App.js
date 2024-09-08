@@ -64,7 +64,7 @@ function App() {
     <div className="App">
       <NavBar/>
       <Routes>
-        <Route path="" element={<Timer currentInterval={currInterval} totalInterval={totalIntervals}
+        <Route path="" element={<Timer currentInterval={currInterval} totalIntervals={totalIntervals}
           breakLengthMins={breakLengthMins} focusLengthMins={focusLengthMins}
           incrementInterval={incrementInterval} editTotalIntervals={editTotalIntervals}
           isFocusState={isFocusInterval} toggleFocusState={toggleFocusState}/>} />
