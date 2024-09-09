@@ -151,6 +151,7 @@ const Timer = (props) => {
                     remainingTime={remainingTime}
                     totalIntervals={props.totalIntervals}
                     currentInterval={props.currentInterval}
+                    isFocusState={props.isFocusState}
                 />
             </div>
         </div>

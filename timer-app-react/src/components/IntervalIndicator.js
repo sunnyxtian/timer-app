@@ -6,6 +6,7 @@ function IntervalIndicator(props) {
   const totalIntervals = props.totalIntervals;
   let remainingTime = props.remainingTime;
   const totalMins = props.totalMins;
+  const isFocusState = props.isFocusState;
 
   // Generate an array with the length of totalIntervals and map it to display intervals
   const intervalsArray = Array(totalIntervals).fill(null);
@@ -15,7 +16,7 @@ function IntervalIndicator(props) {
       {intervalsArray.map((_, index) => (
         <div
           key={index}
-          className={`rounded mx-1 ${index + 1 < currInterval ? "background-color-completed" : "background-color-not-completed"} ${index + 1 === currInterval ? "background-color-in-progress" : ""}`}
+          className={`rounded mx-1 ${index + 1 < currInterval ? "background-color-completed" : "background-color-not-completed"} ${index + 1 === currInterval && props.isFocusState ? "background-color-in-progress" : ""} ${!isFocusState && index + 1 === currInterval ? "background-color-break" : ""}`}
           style={{
             width: "2rem",
             height: "1rem",

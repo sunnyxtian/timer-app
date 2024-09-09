@@ -10,8 +10,12 @@
   background: linear-gradient(
     to left,
     lightgray calc((var(--remaining-time) / var(--total-mins)) * 100%), /* Grey up to the percentage of remaining time */
-    yellow calc((var(--remaining-time) / var(--total-mins)) * 100%), /* Yellow from that percentage to the end */
-    yellow 100% /* Ensure yellow extends to the end */
+    rgb(255, 225, 0) calc((var(--remaining-time) / var(--total-mins)) * 100%), /* Yellow from that percentage to the end */
+    rgb(255, 225, 0) 100% /* Ensure yellow extends to the end */
   );
+}
+
+.background-color-break {
+  background-color: rgb(255, 225, 0);
 }
 
