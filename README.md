@@ -1,13 +1,16 @@
 # Timer app
-The app name and code in progress
+(The app name and code in progress)
+Created Summer 2024.
 
 ## Contributors
 ### Developers: Sunny Tian, Henok Assalif
-### Designers: Ricardo Torres Arevalo, Farrel Sudrajat, Kaitlyn Ellington
+### Designers: Ricardo Torres Arevalo, Farrel Sudrajat, Kaitlyn Ellington, Sunny Tian
 
-A pomodoro timer website geared towards students. Features customizable backgrounds
+A pomodoro timer website made by students, for students. Features customizable backgrounds
 and alarms, adjustable interval lengths, and a progress bar that traces the outline
 of the page.
+
+Created using React and Bootstrap.
 
 ## Instructions for Devs below
 
