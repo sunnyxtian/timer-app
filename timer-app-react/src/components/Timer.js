@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Button from 'react-bootstrap/Button';
 import IntervalIndicator from './IntervalIndicator';
+import '../componentsCSS/Timer.css';
 
 // For sunny
 const Timer = (props) => {
@@ -146,9 +147,8 @@ const Timer = (props) => {
                 )}
             </div>
             <div>
-                <IntervalIndicator
-                    focusLengthMins={props.focusLengthMins}
-                    remainingTime={props.remainingTime}
+                <IntervalIndicator totalMins={INITIAL_DURATION}
+                    remainingTime={remainingTime}
                     totalIntervals={props.totalIntervals}
                     currentInterval={props.currentInterval}
                 />

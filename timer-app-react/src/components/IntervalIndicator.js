@@ -1,25 +1,37 @@
+import '../componentsCSS/Indicator.css';
+
 function IntervalIndicator(props) {
+  // Props parameters
   let currInterval = props.currentInterval;
   const totalIntervals = props.totalIntervals;
   let remainingTime = props.remainingTime;
-  const intervalLengthMins = props.focusLengthMins;
+  const totalMins = props.totalMins;
 
-  const interval = (
-    <div className="bg-secondary-subtle rounded mx-1" style={{width:"2rem", height:"1rem"}}>
-    </div>
-  );
+  // Generate an array with the length of totalIntervals and map it to display intervals
+  const intervalsArray = Array(totalIntervals).fill(null);
 
   return (
     <div className="d-inline-flex p-4">
-      {interval}
-      {interval}
-      {interval}
-      {interval}
+      {intervalsArray.map((_, index) => (
+        <div
+          key={index}
+          className={`rounded mx-1 ${index + 1 < currInterval ? "background-color-completed" : "background-color-not-completed"} ${index + 1 === currInterval ? "background-color-in-progress" : ""}`}
+          style={{
+            width: "2rem",
+            height: "1rem",
+            '--remaining-time': remainingTime, // custom CSS variables
+            '--total-mins': totalMins
+          }}
+        >
+        </div>
+      ))}
     </div>
   );
 }
 
 export default IntervalIndicator;
+
+
 
 
 /**
@@ -43,4 +55,10 @@ export default IntervalIndicator;
  *
  * Intervals needs: Total intervals, current interval, and interval total time and current time in
  * current interval
+ *
+ *
+ * So I got it working but it updates it in progress bar style in both the focus and break sessions.
+ *
+ * My next step is to determine if we only want this featue for focus state or switch the color to
+ * orange or red or something for the break state. (Talk to sunny)(TODO)
  */
