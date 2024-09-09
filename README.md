@@ -1,8 +1,17 @@
-# timer app
+# Timer app
+The app name and code in progress
 
-## Authors: Sunny Tian, Henok Assalif, Ricardo Torres Arevalo, Farrel sudrajat
+## Contributors
+### Developers: Sunny Tian, Henok Assalif
+### Designers: Ricardo Torres Arevalo, Farrel Sudrajat, Kaitlyn Ellington
 
-A website that will help students stay focused while studying.
+A pomodoro timer website geared towards students. Features customizable backgrounds
+and alarms, adjustable interval lengths, and a progress bar that traces the outline
+of the page.
+
+## Instructions for Devs below
+
+(Delete after project is done)
 
 Workflow before starting:
 
