@@ -7,7 +7,10 @@ import '../componentsCSS/Timer.css';
 const Timer = (props) => {
 
     // Define the initial duration in seconds
-    const INITIAL_DURATION = props.isFocusState ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
+    const INITIAL_DURATION = props.isFocusState ? props.focusLengthMins * 60 :
+        props.breakLengthMins * 60;
+
+    const focusOrBreakMode = props.isFocusState ? "focus" : "break";
 
     /**
      * Formats time from seconds to HH:MM:SS
@@ -137,9 +140,9 @@ const Timer = (props) => {
     return (
         <div>
             <div>
-                <h3 className="fs-6 text-secondary">study session</h3>
+                <h3 className="fs-6 text-secondary fw-normal">{focusOrBreakMode + " mode"}</h3>
                 <h1 className="display-1 fw-medium">{timer}</h1>
-                <Button onClick={onClickReset}>Reset</Button>
+                {/* <Button onClick={onClickReset}>Reset</Button> */}
                 {isPaused ? (
                     <Button onClick={onClickResume}>Resume</Button>
                 ) : (

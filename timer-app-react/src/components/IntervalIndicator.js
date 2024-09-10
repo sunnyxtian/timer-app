@@ -16,10 +16,10 @@ function IntervalIndicator(props) {
       {intervalsArray.map((_, index) => (
         <div
           key={index}
-          className={`rounded mx-1 ${index + 1 < currInterval ? "background-color-completed" : "background-color-not-completed"} ${index + 1 === currInterval && props.isFocusState ? "background-color-in-progress" : ""} ${!isFocusState && index + 1 === currInterval ? "background-color-break" : ""}`}
+          className={`rounded-1 mx-1 ${index + 1 < currInterval ? "background-color-completed" : "background-color-not-completed"} ${index + 1 === currInterval && props.isFocusState ? "background-color-in-progress" : ""} ${!isFocusState && index + 1 === currInterval ? "background-color-break" : ""}`}
           style={{
             width: "2rem",
-            height: "1rem",
+            height: "0.6rem",
             '--remaining-time': remainingTime, // custom CSS variables
             '--total-mins': totalMins
           }}
@@ -31,9 +31,6 @@ function IntervalIndicator(props) {
 }
 
 export default IntervalIndicator;
-
-
-
 
 /**
  * This componets represents all the focus states of our pomodoro timer. It will display the
@@ -62,4 +59,5 @@ export default IntervalIndicator;
  *
  * My next step is to determine if we only want this featue for focus state or switch the color to
  * orange or red or something for the break state. (Talk to sunny)(TODO)
+ * - Sunny: THe interval indicator is only for focus states
  */

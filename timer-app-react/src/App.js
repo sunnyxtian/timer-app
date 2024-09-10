@@ -22,7 +22,7 @@ function App() {
   // and then pass the callback setter function as a prop to the Timer component
   // this will allow the Timer component to increment the current interval number
   const [currInterval, setCurrInterval] = useState(0);
-  const [totalIntervals, setTotalIntervals] = useState(3);
+  const [totalIntervals, setTotalIntervals] = useState(4);
 
   // DONE 2. have the break and focus durations as a state variable
   // pass the setter function to the settings component to let the user edit
