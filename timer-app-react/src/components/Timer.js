@@ -13,20 +13,19 @@ const Timer = (props) => {
     const focusOrBreakMode = props.isFocusState ? "focus" : "break";
 
     /**
-     * Formats time from seconds to HH:MM:SS
+     * Formats time from seconds to MM:SS
      * @param {number} seconds - Time in seconds
      * @returns {String} - Formatted time string
      */
     const formatTime = (seconds) => {
         if (seconds <= 0) {
-            return "00:00:00"; // Handle zero or negative time
+            return "00:00"; // Handle zero or negative time
         }
 
-        const hours = Math.floor(seconds / 3600);
         const minutes = Math.floor((seconds % 3600) / 60);
         const secs = seconds % 60;
+
         return (
-            (hours > 9 ? hours : "0" + hours) + ":" +
             (minutes > 9 ? minutes : "0" + minutes) + ":" +
             (secs > 9 ? secs : "0" + secs)
         );
@@ -141,7 +140,7 @@ const Timer = (props) => {
         <div>
             <div>
                 <h3 className="fs-6 text-secondary fw-normal">{focusOrBreakMode + " mode"}</h3>
-                <h1 className="display-1 fw-medium">{timer}</h1>
+                <h1 className="fw-medium">{timer}</h1>
                 {/* <Button onClick={onClickReset}>Reset</Button> */}
                 {isPaused ? (
                     <Button onClick={onClickResume}>Resume</Button>
