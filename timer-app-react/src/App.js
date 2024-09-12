@@ -9,7 +9,6 @@ import React, { useState } from 'react';
 
 import './App.css';
 import Timer from './components/Timer.js';
-import NavBar from './components/NavBar.js';
 import Settings from './components/Settings.js';
 
 function App() {
@@ -62,7 +61,6 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar/>
       <Routes>
         <Route path="" element={<Timer currentInterval={currInterval} totalIntervals={totalIntervals}
           breakLengthMins={breakLengthMins} focusLengthMins={focusLengthMins}

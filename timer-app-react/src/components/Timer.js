@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Button from 'react-bootstrap/Button';
 import IntervalIndicator from './IntervalIndicator';
-import '../componentsCSS/Timer.css';
+import ProgressBar from './ProgressBar';
+import '../components-styling/Timer.css';
 
 // For sunny
 const Timer = (props) => {
@@ -138,7 +139,10 @@ const Timer = (props) => {
 
     return (
         <div>
-            <div>
+            <section>
+                <ProgressBar />
+            </section>
+            <div className="main-timer py-5">
                 <h3 className="fs-6 text-secondary fw-normal">{focusOrBreakMode + " mode"}</h3>
                 <h1 className="fw-medium">{timer}</h1>
                 {/* <Button onClick={onClickReset}>Reset</Button> */}

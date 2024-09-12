@@ -1,4 +1,4 @@
-import '../componentsCSS/Indicator.css';
+import '../components-styling/Indicator.css';
 
 function IntervalIndicator(props) {
   // Props parameters
