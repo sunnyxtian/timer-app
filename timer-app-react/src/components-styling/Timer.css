@@ -1,6 +1,13 @@
 /** Controls the timer layout */
 
+/**
+1.) reduce timer height and width size
+*/
 
 .main-timer h1 {
   font-size: 8rem;
+}
+
+.main-timer {
+  border: 5px black solid;
 }
