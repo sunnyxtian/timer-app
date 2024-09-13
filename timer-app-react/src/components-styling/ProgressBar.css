@@ -1,0 +1,19 @@
+/* ProgressBar.css */
+.progress-bar-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none; /* Ensure clicks pass through */
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+}
+
+.progress-bar path {
+  transition: stroke-dashoffset 0.1s linear;
+}

@@ -33,7 +33,6 @@ function App() {
   // 3. Pass wrapper functions of setters down to the child elements.
   const incrementInterval = function () {
     const updatedCurrInterval = parseInt(currInterval) + 1;
-    console.log("current interval number: " + updatedCurrInterval);
     setCurrInterval(updatedCurrInterval);
   }
 

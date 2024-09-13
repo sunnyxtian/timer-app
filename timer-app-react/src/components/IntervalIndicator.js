@@ -12,7 +12,7 @@ function IntervalIndicator(props) {
   const intervalsArray = Array(totalIntervals).fill(null);
 
   return (
-    <div className="d-inline-flex p-4">
+    <div className="d-inline-flex p-4 entire-indicator">
       {intervalsArray.map((_, index) => (
         <div
           key={index}

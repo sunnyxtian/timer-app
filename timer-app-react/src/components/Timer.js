@@ -37,20 +37,27 @@ const Timer = (props) => {
     const [timer, setTimer] = useState(formatTime(INITIAL_DURATION));
     const [remainingTime, setRemainingTime] = useState(INITIAL_DURATION);
     const [isPaused, setIsPaused] = useState(false);
+    const [progress, setProgress] = useState(0);
 
     /**
      * Updates the timer state value every second
      */
+    // Modify the updateTimer function to update progress
     const updateTimer = () => {
-        setRemainingTime((prevTime) => {
-            if (prevTime > 0) {
-                return prevTime - 1;
-            } else {
-                clearInterval(Ref.current);
-                return 0; // Ensure time doesn't go negative
-            }
-        });
-    };
+      setRemainingTime((prevTime) => {
+          if (prevTime > 0) {
+              const newTime = prevTime - 1;
+              // Calculate progress percentage
+              const newProgress = ((INITIAL_DURATION - newTime) / INITIAL_DURATION) * 100;
+              setProgress(newProgress);
+              return newTime;
+          } else {
+              clearInterval(Ref.current);
+              return 0; // Ensure time doesn't go negative
+          }
+      });
+  };
+
 
     /**
      * Starts the timer
@@ -138,29 +145,29 @@ const Timer = (props) => {
     }, [props.isFocusState]); // Dependency array ensures this runs after isFocusState changes
 
     return (
-        <div>
-            <section>
-                <ProgressBar />
-            </section>
-            <div className="main-timer py-5">
-                <h3 className="fs-6 text-secondary fw-normal">{focusOrBreakMode + " mode"}</h3>
-                <h1 className="fw-medium">{timer}</h1>
-                {/* <Button onClick={onClickReset}>Reset</Button> */}
-                {isPaused ? (
-                    <Button onClick={onClickResume}>Resume</Button>
-                ) : (
-                    <Button onClick={onClickPause}>Pause</Button>
-                )}
-            </div>
-            <div>
-                <IntervalIndicator totalMins={INITIAL_DURATION}
-                    remainingTime={remainingTime}
-                    totalIntervals={props.totalIntervals}
-                    currentInterval={props.currentInterval}
-                    isFocusState={props.isFocusState}
-                />
-            </div>
+      <div className="border">
+        <ProgressBar progress={progress} />
+        <div className="entire-timer">
+          <div className="main-timer py-5">
+            <h3 className="fs-6 text-secondary fw-normal">{focusOrBreakMode + " mode"}</h3>
+            <h1 className="fw-medium">{timer}</h1>
+            {isPaused ? (
+              <Button onClick={onClickResume}>Resume</Button>
+            ) : (
+              <Button onClick={onClickPause}>Pause</Button>
+            )}
+          </div>
+          <div className="entire-interval-indicator">
+            <IntervalIndicator
+              totalMins={INITIAL_DURATION}
+              remainingTime={remainingTime}
+              totalIntervals={props.totalIntervals}
+              currentInterval={props.currentInterval}
+              isFocusState={props.isFocusState}
+            />
+          </div>
         </div>
+      </div>
     );
 };
 
