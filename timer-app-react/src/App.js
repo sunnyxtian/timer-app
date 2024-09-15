@@ -4,7 +4,6 @@
  * Timer App
  */
 
-import { Routes, Route } from 'react-router-dom';
 import React, { useState } from 'react';
 
 import './App.css';
@@ -60,13 +59,10 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="" element={<Timer currentInterval={currInterval} totalIntervals={totalIntervals}
+        <Timer currentInterval={currInterval} totalIntervals={totalIntervals}
           breakLengthMins={breakLengthMins} focusLengthMins={focusLengthMins}
           incrementInterval={incrementInterval} editTotalIntervals={editTotalIntervals}
-          isFocusState={isFocusInterval} toggleFocusState={toggleFocusState}/>} />
-        <Route path="settings" element={<Settings/>} />
-      </Routes>
+          isFocusState={isFocusInterval} toggleFocusState={toggleFocusState}/>
     </div>
   );
 }

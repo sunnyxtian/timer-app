@@ -6,6 +6,7 @@ import '../components-styling/Timer.css';
 
 // For sunny
 const Timer = (props) => {
+  /** TO DO: destructure props for easier readability */
 
     // Define the initial duration in seconds
     const INITIAL_DURATION = props.isFocusState ? props.focusLengthMins * 60 :
@@ -137,7 +138,6 @@ const Timer = (props) => {
 
         // This will run after props.isFocusState has changed
         const newDuration = props.isFocusState ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
-        console.log("Updated duration:", newDuration);
 
         setRemainingTime(newDuration);
         setTimer(formatTime(newDuration));

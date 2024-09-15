@@ -21,13 +21,15 @@
   height: 94vh;
   flex-direction: column;
   background-color: white;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
   position: relative;
   z-index: 2;
+
+  /** Sunny's todo: Fix timer alignment here */
 }
 
 .border {
-  background-color: rgb(9, 187, 9);
+  background-color: rgb(51, 54, 63);
   position: relative;
   overflow: hidden;
 }
