@@ -1,8 +1,67 @@
+.play-pause-btn {
+  width: 60px;
+  height: 60px;
+  background-color: rgb(32, 183, 65);;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-icon, .pause-icon {
+  position: absolute;
+  transition: all 0.3s ease;
+  color: black;
+  font-size: 24px;
+}
+
+.play-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pause-icon {
+  opacity: 0;
+  transform: scale(0.5) rotate(-90deg);
+}
+
+.play-pause-btn.paused .play-icon {
+  opacity: 0;
+  transform: scale(0.5) rotate(90deg);
+}
+
+.play-pause-btn.paused .pause-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.play-pause-btn:active {
+  animation: rotate 0.3s ease-in-out;
+}
+
 /** Controls the timer layout */
 
 /**
 1.) reduce timer height and width size
 */
+
+.main-timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 auto;
+}
 
 .main-timer h1 {
   font-size: 8rem;

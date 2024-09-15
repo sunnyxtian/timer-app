@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import IntervalIndicator from './IntervalIndicator';
 import ProgressBar from './ProgressBar';
 import '../components-styling/Timer.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay, faPause, faRedo } from '@fortawesome/free-solid-svg-icons';
 
 // Timer component
 const Timer = (props) => {
@@ -131,11 +133,12 @@ const Timer = (props) => {
                 <div className="main-timer py-5">
                     <h3 className="fs-6 text-secondary fw-normal">{focusOrBreakMode + " mode"}</h3>
                     <h1 className="fw-medium">{timer}</h1>
-                    {isPaused ? (
-                        <Button onClick={onClickResume}>Resume</Button>
-                    ) : (
-                        <Button onClick={onClickPause}>Pause</Button>
-                    )}
+                    <button className={`play-pause-btn ${isPaused ? '' : 'paused'}`}
+                        onClick={isPaused ? onClickResume : onClickPause}
+                        >
+                        <FontAwesomeIcon icon={faPlay} className="play-icon" />
+                        <FontAwesomeIcon icon={faPause} className="pause-icon" />
+                    </button>
                 </div>
                 <div className="entire-interval-indicator">
                     <IntervalIndicator
