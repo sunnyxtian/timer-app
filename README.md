@@ -3,7 +3,7 @@
 Created Summer 2024.
 
 ## Contributors
-### Developers: Sunny Tian, Henok Assalif
+### Developers: Henok Assalif & Sunny Tian
 ### Designers: Ricardo Torres Arevalo, Farrel Sudrajat, Kaitlyn Ellington, Sunny Tian
 
 A pomodoro timer website made by students, for students. Features customizable backgrounds
