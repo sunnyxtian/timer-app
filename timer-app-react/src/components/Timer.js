@@ -8,9 +8,10 @@ import '../components-styling/Timer.css';
 const Timer = (props) => {
   /** TO DO: destructure props for easier readability */
 
-    // Define the initial duration in seconds
-    const INITIAL_DURATION = props.isFocusState ? props.focusLengthMins * 60 :
-        props.breakLengthMins * 60;
+    // Define the initial duration using state so it can be updated dynamically
+    const [initialDuration, setInitialDuration] = useState(
+        props.isFocusState ? props.focusLengthMins * 60 : props.breakLengthMins * 60
+    );
 
     const focusOrBreakMode = props.isFocusState ? "focus" : "break";
 
@@ -35,30 +36,28 @@ const Timer = (props) => {
 
     // Define refs and state variables
     const Ref = useRef(null);
-    const [timer, setTimer] = useState(formatTime(INITIAL_DURATION));
-    const [remainingTime, setRemainingTime] = useState(INITIAL_DURATION);
+    const [timer, setTimer] = useState(formatTime(initialDuration));
+    const [remainingTime, setRemainingTime] = useState(initialDuration);
     const [isPaused, setIsPaused] = useState(false);
     const [progress, setProgress] = useState(0);
 
     /**
      * Updates the timer state value every second
      */
-    // Modify the updateTimer function to update progress
     const updateTimer = () => {
       setRemainingTime((prevTime) => {
           if (prevTime > 0) {
               const newTime = prevTime - 1;
-              // Calculate progress percentage
-              const newProgress = ((INITIAL_DURATION - newTime) / INITIAL_DURATION) * 100;
+              const newProgress = ((initialDuration - newTime) / initialDuration) * 100;
               setProgress(newProgress);
               return newTime;
           } else {
               clearInterval(Ref.current);
+              setProgress(0);
               return 0; // Ensure time doesn't go negative
           }
       });
-  };
-
+    };
 
     /**
      * Starts the timer
@@ -75,10 +74,9 @@ const Timer = (props) => {
      */
     const handleSwitchState = () => {
       setTimeout(() => {
-        console.log(props.isFocusState); // this outputs the correct state
           const newState = !props.isFocusState; // Switch state
           props.toggleFocusState(newState); // Toggle the focus state
-          // Use Effect is handling the state change
+          setInitialDuration(newState ? props.focusLengthMins * 60 : props.breakLengthMins * 60);
       }, 3000); // 3 second delay before switching state
     };
 
@@ -91,7 +89,6 @@ const Timer = (props) => {
         }
         const newDuration = props.isFocusState ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
         setRemainingTime(newDuration);
-        // setTimer(formatTime(newDuration)); Not necessary since this function runs when remaining time changes
         startTimer();
         setIsPaused(false);
     };
@@ -116,7 +113,7 @@ const Timer = (props) => {
         }
     };
 
-    // We use useEffect to start the timer when the component mounts
+    // Start the timer when the component mounts
     useEffect(() => {
         startTimer();
         return () => clearInterval(Ref.current); // Cleanup interval on unmount
@@ -131,18 +128,14 @@ const Timer = (props) => {
         }
     }, [remainingTime]);
 
+    // Update the initial duration and remaining time when the focus state changes
     useEffect(() => {
-        if (props.isFocusState) { // increment interval if new state is focus session
-          props.incrementInterval(props.currentInterval + 1);
-        }
-
-        // This will run after props.isFocusState has changed
         const newDuration = props.isFocusState ? props.focusLengthMins * 60 : props.breakLengthMins * 60;
-
-        setRemainingTime(newDuration);
+        setInitialDuration(newDuration); // Update the initial duration in state
+        setRemainingTime(newDuration); // Update the remaining time
         setTimer(formatTime(newDuration));
         startTimer();
-    }, [props.isFocusState]); // Dependency array ensures this runs after isFocusState changes
+    }, [props.isFocusState, props.focusLengthMins, props.breakLengthMins]); // Dependencies ensure correct updates
 
     return (
       <div className="border">
@@ -159,7 +152,7 @@ const Timer = (props) => {
           </div>
           <div className="entire-interval-indicator">
             <IntervalIndicator
-              totalMins={INITIAL_DURATION}
+              totalMins={initialDuration}
               remainingTime={remainingTime}
               totalIntervals={props.totalIntervals}
               currentInterval={props.currentInterval}
