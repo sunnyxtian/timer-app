@@ -31,6 +31,12 @@ const ProgressBar = ({ progress }) => {
     <div ref={containerRef} className="progress-bar-container">
       <svg className="progress-bar" viewBox={`0 0 ${width} ${height}`}>
         <path
+        // d (draw) is an attribute that defines the shape of the path (can be thought of as a pen)
+        // M is a command that moves the pen to a new location
+        // H is a command that draws a horizontal line starting from (m) the start point
+        // A is a command that draws an arc
+        // V is a command that draws a vertical line
+        // Z is a command that closes the path
           d={`M ${startOffset},0 H ${width - radius} A ${radius},${radius} 0 0 1 ${width},${radius} V ${height - radius} A ${radius},${radius} 0 0 1 ${width - radius},${height} H ${radius} A ${radius},${radius} 0 0 1 0,${height - radius} V ${radius} A ${radius},${radius} 0 0 1 ${radius},0 Z`}
           fill="none"
           stroke="black"
