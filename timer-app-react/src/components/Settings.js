@@ -1,8 +1,14 @@
 function Settings () {
   return (
     <div>
-      <h1>Settings</h1>
-      <p>Edit settings in progress</p>
+      <div className="">
+        <svg></svg>
+        <svg></svg>
+      </div>
+
+      <div>
+        <svg></svg>
+      </div>
     </div>
   )
 }
