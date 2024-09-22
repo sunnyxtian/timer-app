@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Timer from './components/Timer';
+import Settings from './components/Settings';
 import './App.css';
 
 function App() {
   // State variables
   const [currInterval, setCurrInterval] = useState(1);
   const [totalIntervals, setTotalIntervals] = useState(4);
-  const [breakLengthMins, setBreakLengthMins] = useState(1 / 6); // Adjust as needed
-  const [focusLengthMins, setFocusLengthMins] = useState(2 / 6); // Adjust as needed
+  const [breakLengthMins, setBreakLengthMins] = useState(5); // Adjust as needed
+  const [focusLengthMins, setFocusLengthMins] = useState(20); // Adjust as needed
   const [isFocusInterval, setIsFocusInterval] = useState(true);
 
   // Handler functions
@@ -44,6 +45,11 @@ function App() {
         editFocusLengthMins={editFocusLengthMins}
         isFocusState={isFocusInterval}
         toggleFocusState={toggleFocusState}
+      />
+      <Settings
+        editTotalIntervals={editTotalIntervals}
+        editBreakLengthMins={editBreakLengthMins}
+        editFocusLengthMins={editFocusLengthMins}
       />
     </div>
   );
