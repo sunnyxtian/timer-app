@@ -39,7 +39,6 @@ const ProgressBar = ({ progress }) => {
         // Z is a command that closes the path
           d={`M ${startOffset},0 H ${width - radius} A ${radius},${radius} 0 0 1 ${width},${radius} V ${height - radius} A ${radius},${radius} 0 0 1 ${width - radius},${height} H ${radius} A ${radius},${radius} 0 0 1 0,${height - radius} V ${radius} A ${radius},${radius} 0 0 1 ${radius},0 Z`}
           fill="none"
-          stroke="black"
           strokeWidth="80"
           strokeDasharray={perimeter}
           strokeDashoffset={perimeter - (perimeter * progress / 100)}

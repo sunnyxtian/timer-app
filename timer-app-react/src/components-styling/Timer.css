@@ -1,7 +1,7 @@
 .play-pause-btn {
   width: 60px;
   height: 60px;
-  background-color: rgb(32, 183, 65);;
+  background-color: #E8DEF8;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -15,8 +15,8 @@
 .play-icon, .pause-icon {
   position: absolute;
   transition: all 0.3s ease;
-  color: black;
-  font-size: 24px;
+  color: #43296B;
+  font-size: 1.8rem;
 }
 
 .play-icon {
@@ -88,7 +88,8 @@
 }
 
 .border {
-  background-color: rgb(51, 54, 63);
+  background-color:#43296B;
+  ;
   position: relative;
   overflow: hidden;
 }

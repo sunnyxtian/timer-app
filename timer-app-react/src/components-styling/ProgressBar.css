@@ -16,7 +16,7 @@
 
 .progress-bar path {
   transition: stroke-dashoffset 0.1s linear;
-  stroke: rgb(32, 183, 65);
+  stroke: #C8A5FF;
   stroke-width: 85;
   /** Sunny's todo: Rounded path tip */
 }

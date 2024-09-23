@@ -1,20 +1,20 @@
 .background-color-completed {
-  background-color: rgb(32, 183, 65);
+  background-color: #C8A5FF;
 }
 
 .background-color-not-completed {
-  background-color: lightgray;
+  background-color: #E8DEF8;
 }
 
 .background-color-in-progress {
   background: linear-gradient(
     to left,
-    lightgray calc((var(--remaining-time) / var(--total-mins)) * 100%),
-    rgb(32, 183, 65) calc((var(--remaining-time) / var(--total-mins)) * 100%),
-    rgb(32, 183, 65) 100%
+    #E8DEF8 calc((var(--remaining-time) / var(--total-mins)) * 100%),
+    #C8A5FF calc((var(--remaining-time) / var(--total-mins)) * 100%),
+    #C8A5FF 100%
   );
 }
 
 .background-color-break {
-  background-color: rgb(32, 183, 65);
+  background-color: #C8A5FF;
 }
