@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSliders, faVolumeHigh, faEye, faStopwatch, faImage, faMusic } from '@fortawesome/free-solid-svg-icons';
+import '../components-styling/Settings.css';
 
 function Settings (props) {
   const editTotalIntervals = props.editTotalIntervals;
@@ -7,19 +8,19 @@ function Settings (props) {
   const editFocusLengthMins = props.editFocusLengthMins;
 
   return (
-    <div className="d-inline">
+    <div className="button-bar">
       <div className="btn-group" role="group">
         <button className="btn" type="button">
           <FontAwesomeIcon icon={faVolumeHigh} className="icon fa-2x" />
         </button>
         <button className="btn" type="button">
-          <FontAwesomeIcon icon={faEye} className="icon fa-2x" />
+          <FontAwesomeIcon icon={faEye} className="icon" />
         </button>
       </div>
 
-      <div>
+      <div className="btn-group">
         <button className="btn" type="button">
-          <FontAwesomeIcon icon={faSliders} className="icon fa-2x" />
+          <FontAwesomeIcon icon={faSliders} className="icon" />
         </button>
         <div className="d-none">
           <button className="btn" type="button">

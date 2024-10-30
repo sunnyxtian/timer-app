@@ -1,7 +1,7 @@
 .play-pause-btn {
   width: 60px;
   height: 60px;
-  background-color: #E8DEF8;
+  background-color: #ffffff;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -76,20 +76,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 3vh;
-  height: 94vh;
+  margin: 2.5vh;
+  height: 95vh;
   flex-direction: column;
   background-color: white;
-  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
   position: relative;
   z-index: 2;
-
-  /** Sunny's todo: Fix timer alignment here */
 }
 
 .border {
   background-color:#43296B;
-  ;
   position: relative;
   overflow: hidden;
 }

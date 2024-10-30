@@ -16,13 +16,11 @@ function IntervalIndicator(props) {
       {intervalsArray.map((_, index) => (
         <div
           key={index}
-          className={`rounded-1 mx-1 ${index + 1 < currInterval ? "background-color-completed" :
+          className={`mx-2 ${index + 1 < currInterval ? "background-color-completed" :
             "background-color-not-completed"} ${index + 1 === currInterval && props.isFocusState
             ? "background-color-in-progress" : ""} ${!isFocusState && index + 1 === currInterval
             ? "background-color-break" : ""}`}
           style={{
-            width: "2rem",
-            height: "0.6rem",
             '--remaining-time': remainingTime, // custom CSS variables
             '--total-mins': totalMins
           }}

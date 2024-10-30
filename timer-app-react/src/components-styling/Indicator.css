@@ -18,3 +18,9 @@
 .background-color-break {
   background-color: #C8A5FF;
 }
+
+.entire-indicator div {
+  border-radius: 0.25rem;
+  width: 1.8rem;
+  height: 0.8rem;
+}

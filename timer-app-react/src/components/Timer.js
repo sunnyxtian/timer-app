@@ -130,7 +130,7 @@ const Timer = (props) => {
         <div className="border">
             <ProgressBar progress={progress} />
             <div className="entire-timer">
-                <div className="main-timer py-5">
+                <div className="main-timer py-2">
                     <h3 className="fs-6 text-secondary fw-normal">{focusOrBreakMode + " mode"}</h3>
                     <h1 className="fw-medium">{timer}</h1>
                     <button className={`play-pause-btn ${isPaused ? '' : 'paused'}`}
