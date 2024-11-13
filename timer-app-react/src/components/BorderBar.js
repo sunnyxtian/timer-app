@@ -1,6 +1,6 @@
 // ProgressBar.js
 import React, { useEffect, useRef, useState } from 'react';
-import '../components-styling/ProgressBar.css';
+import '../components-styling/BorderBar.css';
 
 const ProgressBar = ({ progress }) => {
   const containerRef = useRef(null);

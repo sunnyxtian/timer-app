@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Timer from './components/Timer';
+import TimerLayout from './components/TimerLayout';
 import Settings from './components/Settings';
 import './App.css';
 
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <Timer
+      <TimerLayout
         currentInterval={currInterval}
         totalIntervals={totalIntervals}
         breakLengthMins={breakLengthMins}
@@ -45,11 +45,6 @@ function App() {
         editFocusLengthMins={editFocusLengthMins}
         isFocusState={isFocusInterval}
         toggleFocusState={toggleFocusState}
-      />
-      <Settings
-        editTotalIntervals={editTotalIntervals}
-        editBreakLengthMins={editBreakLengthMins}
-        editFocusLengthMins={editFocusLengthMins}
       />
     </div>
   );
